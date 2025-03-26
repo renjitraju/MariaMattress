@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner();
-    
-    
+
+
     // Initiate the wowjs
     new WOW().init();
 
@@ -24,8 +24,8 @@
             $('.sticky-top').removeClass('bg-primary shadow-sm').css('top', '-150px');
         }
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
@@ -41,7 +41,7 @@
 
 
     // Countdown Timer
-    function countDownTimer() {	
+    function countDownTimer() {
         var endTime = new Date("31 December 2023 10:00:00 GMT+00:00");
         endTime = (Date.parse(endTime) / 1000);
 
@@ -90,6 +90,76 @@
         items: 1,
         dotsData: true,
     });
-    
+
 })(jQuery);
 
+$('.quantity button').on('click', function () {
+    var button = $(this);
+    var oldValue = button.parent().parent().find('input').val();
+    if (button.hasClass('btn-plus')) {
+        var newVal = parseFloat(oldValue) + 1;
+    } else {
+        if (oldValue > 0) {
+            var newVal = parseFloat(oldValue) - 1;
+        } else {
+            newVal = 0;
+        }
+    }
+    button.parent().parent().find('input').val(newVal);
+});
+
+
+$('.quantity2 button').on('click', function () {
+    var button = $(this);
+    var oldValue = button.parent().parent().find('input').val();
+    if (button.hasClass('btn-plus2')) {
+        var newVal = parseFloat(oldValue) + 1;
+    } else {
+        if (oldValue > 0) {
+            var newVal = parseFloat(oldValue) - 1;
+        } else {
+            newVal = 0;
+        }
+    }
+    button.parent().parent().find('input').val(newVal);
+});
+
+
+
+$('.quantity3 button').on('click', function () {
+    var button = $(this);
+    var oldValue = button.parent().parent().find('input').val();
+    if (button.hasClass('btn-plus3')) {
+        var newVal = parseFloat(oldValue) + 1;
+    } else {
+        if (oldValue > 0) {
+            var newVal = parseFloat(oldValue) - 1;
+        } else {
+            newVal = 0;
+        }
+    }
+    button.parent().parent().find('input').val(newVal);
+});
+
+
+//products
+$(document).ready(function() {
+    $('.btn-primary45').click(function() {
+        $('#exampleModalCenter').modal('show');
+    });
+});
+
+
+
+$(document).ready(function() {
+    var singlePrice = parseFloat($('#singleprice').text().replace('£', ''));
+    console.log(singlePrice);
+});
+
+
+var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})

@@ -76,7 +76,8 @@ img.animated.pulse {
 .navbar .navbar-nav .nav-link {
     margin-right: 45px;
     padding: 0;
-    color: var(--bs-dark);
+    color: var(--bs-white);
+
     font-weight: 500;
     transition: .5s;
     outline: none;
@@ -84,6 +85,7 @@ img.animated.pulse {
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
+    text-decoration: underline;
     color: var(--bs-white);
 }
 
@@ -426,4 +428,21 @@ img.animated.pulse {
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+.nhsblue {
+    background-color: #2237a3 !important;
+}
+
+.nhsblue-text {
+    color: #2237a3 !important;
+}
+
+.nhsblue-text {
+color: #2237a3;
+border-color: #2237a3;
+}
+.btn-product {
+    color: #2237a3;
+    border-color: #2237a3;
+
 }
