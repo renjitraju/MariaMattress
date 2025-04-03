@@ -14,12 +14,12 @@ return new class extends Migration
 
            $table->id();
            $table->timestamps();
-           $table->string('name')->nullable();
+           $table->string('name',191)->nullable();
            $table->integer('phone')->nullable();
-           $table->string('email')->nullable(); 
-           $table->string('address')->nullable();
+           $table->string('email',191)->nullable(); 
+           $table->string('address',191)->nullable();
            $table->integer('amount')->nullable();
-           $table->string('order_id')->nullable();
+           $table->string('order_id',191)->nullable();
            $table->enum('status', ['pending', 'paid', 'completed'])->default('pending');
 
 

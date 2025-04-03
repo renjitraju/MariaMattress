@@ -11,10 +11,10 @@ return new class extends Migration
     {
         Schema::create('customer_addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('phone')->nullable();  // Change integer to string
-            $table->string('email')->nullable();
-            $table->string('address')->nullable();
+            $table->string('name',191)->nullable();
+            $table->string('phone',191)->nullable();  // Change integer to string
+            $table->string('email',191)->nullable();
+            $table->string('address',191)->nullable();
             $table->timestamps();
         });
     }
