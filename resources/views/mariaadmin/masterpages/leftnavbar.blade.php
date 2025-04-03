@@ -19,41 +19,42 @@
                       <span class="nav-text">MariaMatress Dashboard</span>
                     </a>
                   </li>
-                  <li class="section-title">Pages</li>
+             
                   <li class="has-sub">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#users"
-                      aria-expanded="false" aria-controls="users">
-                      <i class="mdi mdi-account-group"></i>
-                      <span class="nav-text">User</span> <b class="caret"></b>
-                    </a>
-                    <ul class="collapse" id="users" data-parent="#sidebar-menu">
-                      <div class="sub-menu">
-                            <li>
-                              {{-- <a class="sidenav-item-link" href="{{route('admin.user.details')}}"> --}}
-                                <span class="nav-text">New users</span>
-                              </a>
-                            </li>
-                            <li>
-                              {{-- <a class="sidenav-item-link" href="{{route('admin.approveduserslist')}}"> --}}
-                                <span class="nav-text">Approved users</span>
-                              </a>
-                            </li>
-                            <li>
-                              {{-- <a class="sidenav-item-link" href="{{route('admin.user.details')}}"> --}}
-                                <span class="nav-text">Unapproved users</span>
-                              </a>
-                            </li>
-                      </div>
-                    </ul>
-                  </li>
-                  <li class="section-title">Apps</li>
                   <li>
-                    <a class="sidenav-item-link" href="{{ route('admin.contact') }}">
-                        {{-- <a class="sidenav-item-link" href=""> --}}
-                      <i class="mdi mdi-wechat"></i>
-                      <span class="nav-text">Contact</span>
-                    </a>
+                      <a class="sidenav-item-link" href="{{ route('user.index') }}">
+                     
+                        <i class="mdi mdi-wechat"></i>
+                        <span class="nav-text">Users</span>
+                        
+                      </a>
+                  
                   </li>
+                  <li class="section-title">Orders</li>
+                    <li>
+                      <a class="sidenav-item-link" href="{{ route('completed.orders') }}">
+                     
+                        <i class="mdi mdi-wechat"></i>
+                        <span class="nav-text">Completed  Orders</span>
+                        
+                      </a>
+                    </li>
+                    <li>
+                      <a class="sidenav-item-link" href="{{ route('incompleted.orders') }}">
+                        
+                        <i class="mdi mdi-wechat"></i>
+                        <span class="nav-text">Pending Orders</span>
+                        
+                      </a>
+                    </li>
+                  <li class="section-title">Apps</li>
+                    <li>
+                      <a class="sidenav-item-link" href="{{ route('admin.contact') }}">
+                          {{-- <a class="sidenav-item-link" href=""> --}}
+                        <i class="mdi mdi-wechat"></i>
+                        <span class="nav-text">Contact</span>
+                      </a>
+                    </li>
 
                </ul>
             </div>

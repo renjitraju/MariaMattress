@@ -76,7 +76,7 @@
 
 
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal">Shop more</button>
+                            <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal" onclick="storeShopMoreSession('single')">Shop more</button>
                               <a href="{{ route('home.cart', ['type' => Crypt::encrypt('single')]) }}" class="btn btn-product">Checkout</a>
 
                             </div>
@@ -110,11 +110,8 @@
                                  <div class="modal-body text-start">
                                    <p>New item added to the cart</p>
                                  </div>
-
-
-
                                  <div class="modal-footer">
-                                   <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal">Shop more</button>
+                                 <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal" onclick="storeShopMoreSession('double')">Shop more</button>
                                    <a href="{{ route('home.cart', ['type' => Crypt::encrypt('double')]) }}" class="btn btn-product">Checkout</a>
 
                                  </div>
@@ -123,9 +120,6 @@
                            </div>
                             <!--modal end-->                        </div>
                     </div>
-
-
-
                     <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
                         <div class="product-item text-center border h-100 p-4">
                             <img class="img-fluid mb-4" src="{{ asset('assets/img/mariamatress-product1.png') }}" alt="mariamatress-product 3">
@@ -164,7 +158,7 @@
 
 
                                  <div class="modal-footer">
-                                   <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal">Shop more</button>
+                                 <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal" onclick="storeShopMoreSession('king')">Shop more</button>
                                    <a href="{{ route('home.cart', ['type' => Crypt::encrypt('king')]) }}" class="btn btn-product">Checkout</a>
 
                                  </div>
@@ -358,6 +352,19 @@
                 </div>
             </div>
         </div>
-        <!-- Testimonial End -->
-    @endsection
 
+    @endsection
+<script>
+    function storeShopMoreSession(type) {
+        fetch("{{ route('store.session') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            },
+            body: JSON.stringify({ type: type })
+        }).then(response => response.json())
+          .then(data => console.log(data));
+          location.reload();
+    }
+</script>

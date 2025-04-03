@@ -54,7 +54,7 @@
 
 
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal">Shop more</button>
+                              <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal" onclick="storeShopMoreSession('single')">Shop more</button>
                               <a href="{{ route('home.cart', ['type' => Crypt::encrypt('single')]) }}" class="btn btn-product">Checkout</a>
 
                             </div>
@@ -92,7 +92,7 @@
 
 
                                  <div class="modal-footer">
-                                   <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal">Shop more</button>
+                                   <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal" onclick="storeShopMoreSession('double')">Shop more</button>
                                    <a href="{{ route('home.cart', ['type' => Crypt::encrypt('double')]) }}" class="btn btn-product">Checkout</a>
 
                                  </div>
@@ -142,7 +142,7 @@
 
 
                                  <div class="modal-footer">
-                                   <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal">Shop more</button>
+                                   <button type="button" class="btn btn-secondary nhsblue" data-bs-dismiss="modal" onclick="storeShopMoreSession('king')">Shop more</button>
                                    <a href="{{ route('home.cart', ['type' => Crypt::encrypt('king')]) }}" class="btn btn-product">Checkout</a>
 
                                  </div>
@@ -162,3 +162,17 @@
         <!-- Product End -->
 
 @endsection
+<script>
+    function storeShopMoreSession(type) {
+        fetch("{{ route('store.session') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            },
+            body: JSON.stringify({ type: type })
+        }).then(response => response.json())
+          .then(data => console.log(data));
+          location.reload();
+    }
+</script>

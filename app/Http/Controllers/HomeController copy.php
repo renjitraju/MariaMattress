@@ -30,6 +30,7 @@ class HomeController extends Controller
     public function cart(Request $request)
     {
         $type = Crypt::decrypt($request->input('type'));
+
         switch ($type) {
             case 'single':
                 $price = 54.99;

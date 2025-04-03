@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
-
+use Illuminate\Support\Facades\Session;
 class HomeController extends Controller
 {
     public function index()
     {
+     
         return view('index');
     }
     public function aboutus()
@@ -27,30 +28,46 @@ class HomeController extends Controller
     {
         return view('contactus');
     }
+
+    public function session(Request $request){
+
+        $type=$request->type;
+        $cartTypes = session()->get('cart_type');
+        if (!is_array($cartTypes)) {
+            $cartTypes = []; 
+        }
+        if (!in_array($type, $cartTypes)) {
+            $cartTypes[] = $type;
+        }
+
+        $cartTypes = array_slice($cartTypes, -3);
+        session(['cart_type' => $cartTypes]);
+        return response()->json([
+            'message' => 'Item added to cart with type: ' . $type,
+            'type' => $type
+        ]);
+    }
+    
     public function cart(Request $request)
     {
+
+        
         if ($request->has('type')) {
 
 
         $type = Crypt::decrypt($request->input('type'));
-        switch ($type) {
-            case 'single':
-                $price = 54.99;
-                $size = '90 x 190 x 25 cm';
-                session(['type1' => 'single']);
-                break;
-            case 'double':
-                $price = 64.99;
-                $size = '140 x 190 x 25cm';
-                session(['type2' => 'double']);
-                break;
-            case 'king':
-                $price = 74.99;
-                $size = '150 x 200 x 25cm';
-                session(['type3' => 'king']);
-                break;
+        $cartTypes = session()->get('cart_type');
+        if (!is_array($cartTypes)) {
+            $cartTypes = []; 
         }
-        return view('carts', compact('type', 'price', 'size'));
+        if (!in_array($type, $cartTypes)) {
+            $cartTypes[] = $type;
+        }
+
+        $cartTypes = array_slice($cartTypes, -3);
+        session(['cart_type' => $cartTypes]);
+
+        return view('carts');
 
         }
         else {

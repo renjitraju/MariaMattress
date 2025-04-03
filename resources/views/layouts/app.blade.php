@@ -64,10 +64,11 @@
                  <a href="{{route('home.contactus')}}" class="nav-item nav-link">Contact Us</a>
              </div>
              <a href="{{route('home.cart') }}" class="btn btn-outline-light py-2 px-4 d-none d-lg-inline-block position-relative">Cart
-
-                @if(session()->has('type'))
-                    <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2"></span>
-                @endif
+             @if(session()->has('cart_type') && is_array(session('cart_type')) && count(session('cart_type')) > 0)
+                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">
+                    {{ count(session('cart_type')) }}
+                </span>
+            @endif
             </a>
          </div>
      </nav>
